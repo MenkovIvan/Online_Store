@@ -13,18 +13,31 @@ public class TestConnectionController {
             headers = {"Content-type=application/json"})
     @ResponseBody
     public String test(@RequestBody String testJson){
-        Gson gson = new Gson();
-        String test = gson.fromJson(testJson,String.class);
         System.out.println(testJson);
+        String test;
+        Gson gson = new Gson();
 
-        System.out.println(test);
+        try{
+             test = gson.fromJson(testJson,String.class);
+             System.out.println(test);
+        } catch( Exception f){
+            System.out.println("obrabotka "+ f);
+        }
+
 
         gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String message;
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("test","nikita lox");
-        message = gson.toJson(jsonObject);
-        return message;
+
+        try{
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("test","nikita lox");
+            message = gson.toJson(jsonObject);
+            return message;
+        }catch(Exception e){
+            System.out.println("otpravka "+ e);
+        }
+
+        return "error";
     }
 
 }
