@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.*;
+import store.domen.TestEntity;
 
 @RestController
 public class TestConnectionController {
@@ -14,12 +15,12 @@ public class TestConnectionController {
     @ResponseBody
     public String test(@RequestBody String testJson){
         System.out.println(testJson);
-        String test;
+        TestEntity test;
         Gson gson = new Gson();
 
         try{
-             test = gson.fromJson(testJson,String.class);
-             System.out.println(test);
+             test = gson.fromJson(testJson,TestEntity.class);
+             System.out.println(test.toString());
         } catch( Exception f){
             System.out.println("obrabotka "+ f);
         }
