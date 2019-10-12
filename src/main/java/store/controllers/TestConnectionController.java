@@ -3,14 +3,15 @@ package store.controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestConnectionController {
 
-    @PostMapping("/test")
+    @RequestMapping(value = "/test",
+            method = RequestMethod.POST,
+            headers = {"Content-type=application/json"})
+    @ResponseBody
     public String test(@RequestBody String testJson){
         Gson gson = new Gson();
         String test = gson.fromJson(testJson,String.class);
@@ -25,4 +26,5 @@ public class TestConnectionController {
         message = gson.toJson(jsonObject);
         return message;
     }
+
 }
