@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.*;
-import store.domen.TestEntity;
+import store.domain.TestEntity;
 
 @RestController
 public class TestConnectionController {
