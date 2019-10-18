@@ -28,7 +28,7 @@ public class LoginUserController {
 
 
         Iterable<User> userIterable = userRepository.findAll();
-        for (Iterator<User> iterator = userIterable.iterator(); iterator.hasNext();) {
+        for ( Iterator<User> iterator = userIterable.iterator(); iterator.hasNext();){
             System.out.println(iterator.next().getName());
         }
 
@@ -36,7 +36,7 @@ public class LoginUserController {
         User userInDB = userRepository.findByUsername(user.getName());
         String message;
 
-        if (userInDB==null){
+        if (userInDB!=null && user.getName().equals(userInDB.getName())){
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("status", "no");
             jsonObject.addProperty("errorMessage", "Пользователя с таким логином не существует");
