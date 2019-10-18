@@ -2,12 +2,15 @@ package store.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import store.domain.User;
 import store.repository.UserRepository;
 
 @RestController
 public class RegistrUserController {
+
+    @Autowired
     private UserRepository userRepository;
 
     @RequestMapping(value = "/registr",
@@ -24,7 +27,7 @@ public class RegistrUserController {
         System.out.println(userReg.toString());
         String messageReg;
 
-        User userInDb = userRepository.findByUsername(userReg.getName());
+        User userInDb = userRepository.findByUsername(userReg.getUsername());
         if(userInDb == null) {
             JsonObject jsonObject = new JsonObject();
 

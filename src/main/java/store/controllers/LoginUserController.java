@@ -29,14 +29,14 @@ public class LoginUserController {
 
         Iterable<User> userIterable = userRepository.findAll();
         for ( Iterator<User> iterator = userIterable.iterator(); iterator.hasNext();){
-            System.out.println(iterator.next().getName());
+            System.out.println(iterator.next().getUsername());
         }
 
 
-        User userInDB = userRepository.findByUsername(user.getName());
+        User userInDB = userRepository.findByUsername(user.getUsername());
         String message;
 
-        if (userInDB!=null && user.getName().equals(userInDB.getName())){
+        if (userInDB!=null && user.getUsername().equals(userInDB.getUsername())){
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("status", "no");
             jsonObject.addProperty("errorMessage", "Пользователя с таким логином не существует");
