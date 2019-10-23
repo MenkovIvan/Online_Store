@@ -2,6 +2,7 @@ package store.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import store.domain.User;
 import store.repository.UserRepository;
@@ -11,7 +12,13 @@ import java.util.Iterator;
 @RestController
 public class LoginUserController {
 
+  ///  @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    public LoginUserController(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     @RequestMapping(value = "/login",
             method = RequestMethod.POST,
