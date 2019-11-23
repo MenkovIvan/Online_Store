@@ -30,7 +30,7 @@ public class UserService {
         String message;
         Integer status;
 
-        if (userRepository.existsUserByEmailAndPassword(userFromClient.getUsername(),userFromClient.getPassword())) {
+        if (userRepository.existsUserByEmailAndPassword(userFromClient.getEmail(),userFromClient.getPassword())) {
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
             log.info("login is true");
@@ -62,7 +62,7 @@ public class UserService {
             status = RequestStatus.OK_STATUS.getStatus();
         } else{
             message = "User with this email is exist, change email";
-            status = RequestStatus.OK_STATUS.getStatus();
+            status = RequestStatus.BAD_STATUS.getStatus();
         }
         return getJsonString(message,status);
     }
