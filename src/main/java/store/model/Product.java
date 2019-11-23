@@ -1,7 +1,12 @@
 package store.model;
 
-public class Product {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "product",schema = "store")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String fullName;
@@ -11,7 +16,7 @@ public class Product {
     //private ??? carton;
     //class category -
     private String manufacturer;
-    private Integer user_id;
+    //private Integer user_id;
 
     public Integer getId() {
         return id;
@@ -68,12 +73,12 @@ public class Product {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
-
+/*
     public Integer getUser_id() {
         return user_id;
     }
 
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
-    }
+    }*/
 }
