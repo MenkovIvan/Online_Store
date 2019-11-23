@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import store.domain.User;
+import store.model.User;
 import store.helper.RequestStatus;
 import store.repository.UserRepository;
 
@@ -30,7 +30,7 @@ public class UserService {
         String message;
         Integer status;
 
-        if (userRepository.existsUserByUsernameAndPassword(userFromClient.getUsername(),userFromClient.getPassword())) {
+        if (userRepository.existsUserByEmailAndPassword(userFromClient.getUsername(),userFromClient.getPassword())) {
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
             log.info("login is true");
@@ -41,8 +41,8 @@ public class UserService {
             status = RequestStatus.BAD_STATUS.getStatus();
         }
         else{
-            log.info("false username");
-            message = "User with this username is not exist";
+            log.info("false email");
+            message = "User with this email is not exist";
             status = RequestStatus.BAD_STATUS.getStatus();
         }
         return getJsonString(message,status);
@@ -61,7 +61,7 @@ public class UserService {
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
         } else{
-            message = "User with this username is exist, change username";
+            message = "User with this email is exist, change email";
             status = RequestStatus.OK_STATUS.getStatus();
         }
         return getJsonString(message,status);

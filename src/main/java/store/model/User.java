@@ -1,4 +1,4 @@
-package store.domain;
+package store.model;
 
 import javax.persistence.*;
 import java.util.Objects;

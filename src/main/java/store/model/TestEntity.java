@@ -1,4 +1,4 @@
-package store.domain;
+package store.model;
 
 public class TestEntity {
     private String name;

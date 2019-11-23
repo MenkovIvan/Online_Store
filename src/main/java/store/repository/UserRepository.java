@@ -3,11 +3,11 @@ package store.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import store.domain.User;
+import store.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer> {
 
     User findByUsername(String username);
-    Boolean existsUserByUsernameAndPassword(String username, String password);
+    Boolean existsUserByEmailAndPassword(String email, String password);
 }
