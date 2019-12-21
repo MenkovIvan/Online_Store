@@ -9,36 +9,35 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product",schema = "store")
 public class Product {
-    @Expose
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Expose
+
     private String name;
-    @Expose
+
     @Column(name = "fullname")
     private String fullName;
-    @Expose
+
     private Double cost;
-    @Expose
+
     private String manufacturer;
-    @Expose
+
     private String comment;
     //private ??? carton;
-    @Expose
+
     private String user_name;
-    @Expose
+
     @Column(name = "telephonenumber")
     private String telephoneNumber;
-    @Expose
+
     private String email;
-    @Expose
+
     private String category;
-    @Expose
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Telephone telephone;
-    @Expose
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Televisor televisor;
