@@ -34,12 +34,12 @@ public class Product {
 
     private String category;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    //@OneToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "product_id")
     private Telephone telephone;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    //@OneToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "product_id")
     private Televisor televisor;
 
     //class category -
