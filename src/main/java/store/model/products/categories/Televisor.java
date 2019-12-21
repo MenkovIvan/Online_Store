@@ -10,7 +10,7 @@ public class Televisor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer Id;
 
     private String weight;
 
@@ -37,11 +37,11 @@ public class Televisor {
     private Boolean usb;
 
     public Integer getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getWeight() {

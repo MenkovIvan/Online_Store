@@ -10,7 +10,7 @@ public class Telephone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer Id;
 
     private String os;
 
@@ -36,11 +36,11 @@ public class Telephone {
     private Boolean nfc;
 
     public Integer getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getOs() {
