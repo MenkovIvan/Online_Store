@@ -45,7 +45,7 @@ public class UserService {
             message = "User with this email is not exist";
             status = RequestStatus.BAD_STATUS.getStatus();
         }
-        return getJsonString(message,status,userFromClient.getUsername());
+        return getJsonString(message,status,userInDB.getUsername());
     }
 
     public String registrUser(String inputJson){
