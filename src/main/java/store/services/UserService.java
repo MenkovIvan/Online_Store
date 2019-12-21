@@ -34,6 +34,7 @@ public class UserService {
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
             log.info("login is true");
+            return getJsonString(message,status,userInDB.getUsername());
         }
         else if(userInDB != null){
             log.info("false password");
@@ -45,7 +46,7 @@ public class UserService {
             message = "User with this email is not exist";
             status = RequestStatus.BAD_STATUS.getStatus();
         }
-        return getJsonString(message,status,userInDB.getUsername());
+        return getJsonString(message,status);
     }
 
     public String registrUser(String inputJson){
