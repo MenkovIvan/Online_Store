@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product",schema = "store")
 public class Product {
-    @Expose(deserialize = false)
+    @Expose
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
