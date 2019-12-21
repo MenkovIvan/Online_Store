@@ -35,9 +35,11 @@ public class Product {
     private String category;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Telephone telephone;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Televisor televisor;
 
     //class category -
