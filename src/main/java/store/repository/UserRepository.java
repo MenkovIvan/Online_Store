@@ -9,5 +9,6 @@ import store.model.User;
 public interface UserRepository extends CrudRepository<User,Integer> {
 
     User findByUsername(String username);
+    User findUserByEmail(String email);
     Boolean existsUserByEmailAndPassword(String email, String password);
 }

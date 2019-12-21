@@ -25,7 +25,7 @@ public class UserService {
     public String loginUser(String inputJson){
 
         User userFromClient = gson.fromJson(inputJson, User.class);
-        User userInDB = userRepository.findByUsername(userFromClient.getUsername());
+        User userInDB = userRepository.findUserByEmail(userFromClient.getEmail());
 
         String message;
         Integer status;
