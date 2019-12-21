@@ -1,4 +1,4 @@
-package store.model;
+package store.model.products;
 
 import javax.persistence.*;
 
@@ -10,13 +10,19 @@ public class Product {
     private Integer id;
     private String name;
     private String fullName;
-    private String category;
     private Double cost;
+    private String manufacturer;
     private String comment;
     //private ??? carton;
+    private String user_name;
+    private String telephoneNumber;
+    private String email;
+    private String category;
+    private Integer category_id;
+
     //class category -
-    private String manufacturer;
-    //private Integer user_id;
+
+
 
     public Integer getId() {
         return id;
@@ -73,12 +79,36 @@ public class Product {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
-/*
-    public Integer getUser_id() {
-        return user_id;
+
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
-    }*/
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Integer category_id) {
+        this.category_id = category_id;
+    }
 }

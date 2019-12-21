@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import store.model.Product;
 import store.services.ProductService;
 
 @RestController
@@ -29,7 +28,7 @@ public class ProductController {
     @RequestMapping("/product/info")
     public String getInfoProduct(@RequestBody String inputJson){
         // TODO: вернуть всю информацию об определенном товаре
-        return " ";
+        return productService.getInfoProduct(inputJson);
     }
 
     @RequestMapping("/product/list")

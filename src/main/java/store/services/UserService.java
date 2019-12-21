@@ -45,7 +45,7 @@ public class UserService {
             message = "User with this email is not exist";
             status = RequestStatus.BAD_STATUS.getStatus();
         }
-        return getJsonString(message,status);
+        return getJsonString(message,status,userFromClient.getUsername());
     }
 
     public String registrUser(String inputJson){
@@ -96,6 +96,17 @@ public class UserService {
         return jsonToClient;
     }
 
+    private String getJsonString(String message, Integer status, String name) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("status",status);
+        jsonObject.addProperty("message",message);
+        jsonObject.addProperty("name",name);
+        String jsonToClient = jsonObject.toString();
+
+        log.info("return to client={}", jsonToClient);
+        return jsonToClient;
+    }
+
     private String getJsonStringWithUser(User user, String message, Integer status) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("status",status);
@@ -107,4 +118,5 @@ public class UserService {
 
         return jsonToClient;
     }
+
 }
