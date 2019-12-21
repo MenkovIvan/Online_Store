@@ -31,10 +31,16 @@ public class ProductController {
         return productService.getInfoProduct(inputJson);
     }
 
-    @RequestMapping("/product/list")
-    public String getListProduct(@RequestBody String inputJson){
-        // TODO: вернуть лист из товаров, соответствующих запросу
-        return " ";
+    @RequestMapping("/product/list/all")
+    public String getListProduct(){
+        // TODO: вернуть лист из товаров любой категории
+        return productService.getListProducts();
+    }
+
+    @RequestMapping("/product/list/category")
+    public String getListProductCategory(){
+        // TODO: вернуть лист из товаров заданной категории
+        return "";
     }
 
     @RequestMapping("/product/delete")

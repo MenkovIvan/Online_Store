@@ -13,6 +13,9 @@ import store.repository.ProductRepository;
 import store.repository.TelephoneRepository;
 import store.repository.TelevisorRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Slf4j
 public class ProductService {
@@ -77,6 +80,13 @@ public class ProductService {
             status = RequestStatus.BAD_STATUS.getStatus();
         }
         return getJsonString(message,status);
+    }
+
+    public String getListProducts(){
+        List<Product> productList = new ArrayList<>();
+        Iterable<Product> iterable = productRepository.findAll();
+        iterable.forEach(productList::add);
+        return gson.toJson(productList);
     }
 
     private String getJsonString(String message, Integer status) {
