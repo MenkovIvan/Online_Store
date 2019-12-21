@@ -1,16 +1,39 @@
 package store.model.products.categories;
 
+import com.google.gson.annotations.Expose;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "televisor",schema = "store")
 public class Televisor {
+    @Expose
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Expose
     private String weight;
+    @Expose
     private String size;
+    @Expose
     private String diagonal;
+    @Expose
+    @Column(name = "screensize")
     private String screenSize;
+    @Expose
+    @Column(name = "soundpower")
     private String soundPower;
+    @Expose
+    @Column(name = "numberspeakers")
     private String numberSpeakers;
+    @Expose
     private Boolean wifi;
+    @Expose
     private Boolean bluetooth;
+    @Expose
+    @Column(name = "smarttv")
     private Boolean smartTV;
+    @Expose
     private Boolean usb;
 
     public Integer getId() {

@@ -1,24 +1,47 @@
 package store.model.products;
 
+import com.google.gson.annotations.Expose;
+import store.model.products.categories.Telephone;
+import store.model.products.categories.Televisor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "product",schema = "store")
 public class Product {
+    @Expose(deserialize = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Expose
     private String name;
+    @Expose
+    @Column(name = "fullname")
     private String fullName;
+    @Expose
     private Double cost;
+    @Expose
     private String manufacturer;
+    @Expose
     private String comment;
     //private ??? carton;
+    @Expose
     private String user_name;
+    @Expose
+    @Column(name = "telephonenumber")
     private String telephoneNumber;
+    @Expose
     private String email;
+    @Expose
     private String category;
-    private Integer category_id;
+    @Expose
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "product_id")
+    private Telephone telephone;
+    @Expose
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "product_id")
+    private Televisor televisor;
 
     //class category -
 
@@ -104,11 +127,19 @@ public class Product {
         this.email = email;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
+    public Telephone getTelephone() {
+        return telephone;
     }
 
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
+    public void setTelephone(Telephone telephone) {
+        this.telephone = telephone;
+    }
+
+    public Televisor getTelevisor() {
+        return televisor;
+    }
+
+    public void setTelevisor(Televisor televisor) {
+        this.televisor = televisor;
     }
 }

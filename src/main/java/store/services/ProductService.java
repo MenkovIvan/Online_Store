@@ -7,39 +7,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import store.helper.RequestStatus;
 import store.model.products.Product;
+import store.model.products.categories.Telephone;
+import store.model.products.categories.Televisor;
 import store.repository.ProductRepository;
+import store.repository.TelephoneRepository;
+import store.repository.TelevisorRepository;
 
 @Service
 @Slf4j
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final TelephoneRepository telephoneRepository;
+    private final TelevisorRepository televisorRepository;
 
     private Gson gson = new Gson();
 
     @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, TelephoneRepository telephoneRepository, TelevisorRepository televisorRepository) {
         this.productRepository = productRepository;
+        this.telephoneRepository = telephoneRepository;
+        this.televisorRepository = televisorRepository;
     }
 
     public String addProduct(String inputJson){
 
         Product productFromClient = gson.fromJson(inputJson, Product.class);
-        Product productInDb = productRepository.findByFullName(productFromClient.getFullName());
 
-        String message;
+        String message = "add product";
         Integer status;
 
-        if (productInDb == null){
-            log.info("not exist product with this fulName, add to DB");
-            message = "OK";
-            status = RequestStatus.OK_STATUS.getStatus();
-        }
-        else{
-            log.info("exist product with this fulName");
-            message = "exist product with this fulName";
-            status = RequestStatus.BAD_STATUS.getStatus();
-        }
+        status = RequestStatus.OK_STATUS.getStatus();
+        /*if (productFromClient.getTelephone() != null){
+            Telephone telephoneFromClient = productFromClient.getTelephone();
+            telephoneRepository.save(telephoneFromClient);
+
+            log.info("add product - telephone");
+            message = "add product - telephone";
+
+        } else if (productFromClient.getTelevisor() != null){
+            Televisor televisorFromClient = productFromClient.getTelevisor();
+            televisorRepository.save(televisorFromClient);
+
+            log.info("add product - televisor");
+            message = "add product - televisor";
+        }*/
+        productRepository.save(productFromClient);
+
+
         return getJsonString(message,status);
     }
 

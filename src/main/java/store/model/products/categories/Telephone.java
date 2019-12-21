@@ -1,19 +1,38 @@
 package store.model.products.categories;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.google.gson.annotations.Expose;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "telephone",schema = "store")
 public class Telephone {
+    @Expose(deserialize = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Expose
     private String os;
+    @Expose
     private String weight;
+    @Expose
     private String size;
+    @Expose
     private String diagonal;
+    @Expose
     private String processor;
+    @Expose
+    @Column(name = "internalmemory")
     private String internalMemory;
+    @Expose
     private String ram;
+    @Expose
+    @Column(name = "batterycapacity")
     private String batteryCapacity;
+    @Expose
+    @Column(name = "numbercamera")
     private String numberCamera;
+    @Expose
     private Boolean nfc;
 
     public String getOs() {

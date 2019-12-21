@@ -52,11 +52,12 @@ public class UserService {
     public String registrUser(String inputJson){
         User userFromClient = gson.fromJson(inputJson, User.class);
         User userInDB = userRepository.findByUsername(userFromClient.getUsername());
+        User userInDB2 = userRepository.findUserByEmail(userFromClient.getEmail());
 
         String message;
         Integer status;
 
-        if (userInDB == null){
+        if (userInDB == null && userInDB2 == null){
             log.info("add user to database");
             userRepository.save(userFromClient);
             message = "OK";
