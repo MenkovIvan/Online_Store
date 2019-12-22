@@ -33,7 +33,7 @@ public class Telephone {
     @Column(name = "numbercamera")
     private String numberCamera;
 
-    private Boolean nfc;
+    private String nfc;
 
     public Integer getId() {
         return id;
@@ -115,11 +115,11 @@ public class Telephone {
         this.numberCamera = numberCamera;
     }
 
-    public Boolean getNfc() {
+    public String getNfc() {
         return nfc;
     }
 
-    public void setNfc(Boolean nfc) {
+    public void setNfc(String nfc) {
         this.nfc = nfc;
     }
 }

@@ -27,14 +27,14 @@ public class Televisor {
     @Column(name = "numberspeakers")
     private String numberSpeakers;
 
-    private Boolean wifi;
+    private String wifi;
 
-    private Boolean bluetooth;
+    private String bluetooth;
 
     @Column(name = "smarttv")
-    private Boolean smartTV;
+    private String smartTV;
 
-    private Boolean usb;
+    private String usb;
 
     public Integer getId() {
         return id;
@@ -92,35 +92,35 @@ public class Televisor {
         this.numberSpeakers = numberSpeakers;
     }
 
-    public Boolean getWifi() {
+    public String getWifi() {
         return wifi;
     }
 
-    public void setWifi(Boolean wifi) {
+    public void setWifi(String wifi) {
         this.wifi = wifi;
     }
 
-    public Boolean getBluetooth() {
+    public String getBluetooth() {
         return bluetooth;
     }
 
-    public void setBluetooth(Boolean bluetooth) {
+    public void setBluetooth(String bluetooth) {
         this.bluetooth = bluetooth;
     }
 
-    public Boolean getSmartTV() {
+    public String getSmartTV() {
         return smartTV;
     }
 
-    public void setSmartTV(Boolean smartTV) {
+    public void setSmartTV(String smartTV) {
         this.smartTV = smartTV;
     }
 
-    public Boolean getUsb() {
+    public String getUsb() {
         return usb;
     }
 
-    public void setUsb(Boolean usb) {
+    public void setUsb(String usb) {
         this.usb = usb;
     }
 }

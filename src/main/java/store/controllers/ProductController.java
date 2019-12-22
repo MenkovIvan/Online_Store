@@ -49,7 +49,7 @@ public class ProductController {
     @RequestMapping("/product/list/email")
     public String getListProductEmail(@RequestBody String inputJson){
         log.info("Request to get Products with email(user), body = {" + inputJson + "}");
-        // TODO: вернуть лист из товаров заданной категории
+        // TODO: вернуть лист из товаров заданного email
         return productService.getListProductsEmail(inputJson);
     }
 
