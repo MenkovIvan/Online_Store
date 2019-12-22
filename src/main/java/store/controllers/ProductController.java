@@ -27,20 +27,30 @@ public class ProductController {
 
     @RequestMapping("/product/info")
     public String getInfoProduct(@RequestBody String inputJson){
+        log.info("Request to add Product, body = {" + inputJson + "}");
         // TODO: вернуть всю информацию об определенном товаре
         return productService.getInfoProduct(inputJson);
     }
 
     @RequestMapping("/product/list/all")
     public String getListProduct(){
+        log.info("Request to get all Products");
         // TODO: вернуть лист из товаров любой категории
         return productService.getListProducts();
     }
 
     @RequestMapping("/product/list/category")
-    public String getListProductCategory(){
+    public String getListProductCategory(@RequestBody String inputJson){
+        log.info("Request to get Products with category, body = {" + inputJson + "}");
         // TODO: вернуть лист из товаров заданной категории
-        return "";
+        return productService.getListProductsCategory(inputJson);
+    }
+
+    @RequestMapping("/product/list/email")
+    public String getListProductEmail(@RequestBody String inputJson){
+        log.info("Request to get Products with email(user), body = {" + inputJson + "}");
+        // TODO: вернуть лист из товаров заданной категории
+        return productService.getListProductsEmail(inputJson);
     }
 
     @RequestMapping("/product/delete")

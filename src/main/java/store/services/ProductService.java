@@ -33,20 +33,7 @@ public class ProductService {
         Integer status;
 
         status = RequestStatus.OK_STATUS.getStatus();
-        /*if (productFromClient.getTelephone() != null){
-            Telephone telephoneFromClient = productFromClient.getTelephone();
-            telephoneRepository.save(telephoneFromClient);
 
-            log.info("add product - telephone");
-            message = "add product - telephone";
-
-        } else if (productFromClient.getTelevisor() != null){
-            Televisor televisorFromClient = productFromClient.getTelevisor();
-            televisorRepository.save(televisorFromClient);
-
-            log.info("add product - televisor");
-            message = "add product - televisor";
-        }*/
         productRepository.save(productFromClient);
 
 
@@ -78,7 +65,23 @@ public class ProductService {
         List<Product> productList = new ArrayList<>();
         Iterable<Product> iterable = productRepository.findAll();
         iterable.forEach(productList::add);
-        return gson.toJson(productList);
+        return getJsonList(productList);
+    }
+
+    public String getListProductsCategory(String inputJson){
+        Product productFromClient = gson.fromJson(inputJson, Product.class);
+
+        List<Product> productList = productRepository.findProductsByCategory(productFromClient.getCategory());
+
+        return getJsonList(productList);
+    }
+
+    public String getListProductsEmail(String inputJson){
+        Product productFromClient = gson.fromJson(inputJson, Product.class);
+
+        List<Product> productList = productRepository.findProductsByEmail(productFromClient.getEmail());
+
+        return getJsonList(productList);
     }
 
     private String getJsonString(String message, Integer status) {
@@ -86,6 +89,13 @@ public class ProductService {
         jsonObject.addProperty("status",status);
         jsonObject.addProperty("message",message);
         String jsonToClient = jsonObject.toString();
+
+        log.info("return to client={}", jsonToClient);
+        return jsonToClient;
+    }
+
+    private String getJsonList(List<Product> productList){
+        String jsonToClient = gson.toJson(productList);
 
         log.info("return to client={}", jsonToClient);
         return jsonToClient;
