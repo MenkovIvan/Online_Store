@@ -34,11 +34,11 @@ public class Product {
 
     private String category;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Telephone telephone;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Televisor televisor;
 
