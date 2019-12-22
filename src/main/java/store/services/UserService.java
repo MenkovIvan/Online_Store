@@ -63,7 +63,7 @@ public class UserService {
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
         } else{
-            message = "User with this email is exist, change email";
+            message = "User with this email or username is exist, change it";
             status = RequestStatus.BAD_STATUS.getStatus();
         }
         return getJsonString(message,status);

@@ -7,11 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import store.helper.RequestStatus;
 import store.model.products.Product;
-import store.model.products.categories.Telephone;
-import store.model.products.categories.Televisor;
 import store.repository.ProductRepository;
-import store.repository.TelephoneRepository;
-import store.repository.TelevisorRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +17,12 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final TelephoneRepository telephoneRepository;
-    private final TelevisorRepository televisorRepository;
 
     private Gson gson = new Gson();
 
     @Autowired
-    public ProductService(ProductRepository productRepository, TelephoneRepository telephoneRepository, TelevisorRepository televisorRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.telephoneRepository = telephoneRepository;
-        this.televisorRepository = televisorRepository;
     }
 
     public String addProduct(String inputJson){
