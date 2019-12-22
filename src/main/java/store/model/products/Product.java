@@ -38,9 +38,9 @@ public class Product {
     @JoinColumn(name = "product_id"/*, insertable = false, updatable = false*/)
     private Telephone telephone;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private Televisor televisor;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "product_id", insertable = false, updatable = false)
+    //private Televisor televisor;
 
     //class category -
 
@@ -134,11 +134,11 @@ public class Product {
         this.telephone = telephone;
     }
 
-    public Televisor getTelevisor() {
+    /*public Televisor getTelevisor() {
         return televisor;
     }
 
     public void setTelevisor(Televisor televisor) {
         this.televisor = televisor;
-    }
+    }*/
 }
