@@ -35,16 +35,12 @@ public class Product {
     private String category;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id"/*, insertable = false, updatable = false*/)
+    @JoinColumn(name = "telephone_id")
     private Telephone telephone;
 
-    //@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "product_id", insertable = false, updatable = false)
-    //private Televisor televisor;
-
-    //class category -
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "televisor_id")
+    private Televisor televisor;
 
     public Integer getId() {
         return id;
@@ -134,11 +130,11 @@ public class Product {
         this.telephone = telephone;
     }
 
-    /*public Televisor getTelevisor() {
+    public Televisor getTelevisor() {
         return televisor;
     }
 
     public void setTelevisor(Televisor televisor) {
         this.televisor = televisor;
-    }*/
+    }
 }
