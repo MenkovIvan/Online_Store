@@ -52,11 +52,11 @@ public class ProductService {
             log.info("get this Product");
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
-            getJsonStringWithUser(productInDb,message,status);
+            return getJsonStringWithUser(productInDb,message,status);
         }
         else{
-            log.info("exist product with this fulName");
-            message = "exist product with this fulName";
+            log.info("not exist product with this id");
+            message = "not exist product with this id";
             status = RequestStatus.BAD_STATUS.getStatus();
         }
         return getJsonString(message,status);
