@@ -43,7 +43,7 @@ public class ProductService {
     public String getInfoProduct(String inputJson){
 
         Product productFromClient = gson.fromJson(inputJson, Product.class);
-        Product productInDb = productRepository.findByFullName(productFromClient.getFullName());
+        Product productInDb = productRepository.findProductById(productFromClient.getId());
 
         String message;
         Integer status;
@@ -52,6 +52,7 @@ public class ProductService {
             log.info("get this Product");
             message = "OK";
             status = RequestStatus.OK_STATUS.getStatus();
+            getJsonStringWithUser(productInDb,message,status);
         }
         else{
             log.info("exist product with this fulName");
@@ -91,6 +92,18 @@ public class ProductService {
         String jsonToClient = jsonObject.toString();
 
         log.info("return to client={}", jsonToClient);
+        return jsonToClient;
+    }
+
+    private String getJsonStringWithUser(Product product, String message, Integer status) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("status",status);
+        jsonObject.addProperty("message",message);
+
+        jsonObject.add("product",gson.toJsonTree(product));
+        String jsonToClient = jsonObject.toString();
+        log.info("return to client={}", jsonToClient);
+
         return jsonToClient;
     }
 
